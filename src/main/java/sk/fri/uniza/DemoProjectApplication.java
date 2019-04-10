@@ -12,6 +12,7 @@ import sk.fri.uniza.auth.ExampleAuthorizer;
 import sk.fri.uniza.auth.User;
 import sk.fri.uniza.health.TemplateHealthCheck;
 import sk.fri.uniza.resources.HelloWorldResource;
+import sk.fri.uniza.resources.LoginResource;
 
 public class DemoProjectApplication extends Application<DemoProjectConfiguration> {
 
@@ -36,6 +37,7 @@ public class DemoProjectApplication extends Application<DemoProjectConfiguration
                 configuration.getTemplate(),
                 configuration.getDefaultName()
         );
+
         final TemplateHealthCheck healthCheck =
                 new TemplateHealthCheck(configuration.getTemplate());
 
@@ -52,6 +54,9 @@ public class DemoProjectApplication extends Application<DemoProjectConfiguration
 
         environment.healthChecks().register("template", healthCheck);
         environment.jersey().register(resource);
+
+        final LoginResource loginResource = new LoginResource();
+        environment.jersey().register(loginResource);
     }
 
 }
