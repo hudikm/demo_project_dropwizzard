@@ -1,3 +1,18 @@
+# Úloha
+
+Vytvorte v projekte:
+
+- REST rozhranie kde sa neregistrovaný používateľ môže registrovať, pričom mu budú pridelené   READ_ONLY práva. 
+
+- Rozhranie pomocou ktorého prihlásený administrátor môže:
+
+  - upraviť heslo a práva konkrétnemu užívateľovi,
+
+  - zobraziť všetkých užívateľov zaregistrovaných v systéme,
+
+  - vymazať užívateľa.
+
+
 # DemoProject
 
 How to start the DemoProject application

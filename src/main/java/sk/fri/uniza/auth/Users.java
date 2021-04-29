@@ -4,10 +4,7 @@ import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
 
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 public class Users implements BasicDao<User, String> {
     final static Map<String, User> usersDB;
@@ -16,11 +13,11 @@ public class Users implements BasicDao<User, String> {
         User user = new User("martin", "martin", ImmutableSet.of(Roles.ADMIN));
         User user1 = new User("milan", "milan", ImmutableSet.of(Roles.READ_ONLY));
         User user2 = new User("matej", "matej", null);
-        usersDB = ImmutableMap.of(
+        usersDB = new HashMap<>(ImmutableMap.of(
                 user.getUserName(), user,
                 user1.getUserName(), user1,
                 user2.getUserName(), user2
-                );
+        ));
     }
 
     @Override
@@ -35,16 +32,16 @@ public class Users implements BasicDao<User, String> {
 
     @Override
     public void save(User user) {
-
+        usersDB.put(user.getUserName(), user);
     }
 
     @Override
-    public void update(User user, String[] params) {
-
+    public void update(User user) {
+        usersDB.put(user.getUserName(), user);
     }
 
     @Override
     public void delete(User user) {
-
+        usersDB.put(user.getUserName(), user);
     }
 }

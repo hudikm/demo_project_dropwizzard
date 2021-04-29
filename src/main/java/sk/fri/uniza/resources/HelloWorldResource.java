@@ -13,6 +13,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.Optional;
 
@@ -56,5 +57,12 @@ public class HelloWorldResource {
         } else {
             return "Greetings, anonymous visitor!";
         }
+    }
+
+    @GET
+    @Path("/logout")
+    @RolesAllowed({Roles.ADMIN,Roles.READ_ONLY})
+    public Response logout(@Auth User user){
+        return Response.status(Response.Status.UNAUTHORIZED).build();
     }
 }
